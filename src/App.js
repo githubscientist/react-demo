@@ -639,14 +639,411 @@
 
 // export default App;
 
-import React from 'react'
-import Gallery from './components/Gallery';
+// import React from 'react'
+// import Gallery from './components/Gallery';
+
+// function App() {
+  
+//   return (
+//     <div>
+//       <Gallery />
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function App() {
+
+//   // useState hook
+//   // move the states into a single state
+//   // const [left, setLeft] = useState(0);
+//   // const [right, setRight] = useState(0);
+
+//   const [clicks, setClicks] = useState({
+//     left: 0, 
+//     right: 0
+//   });
+
+//   const buttonStyle = {
+//     fontSize: '20px',
+//     padding: '10px 20px',
+//   }
+
+//   const handleLeftClick = () => {
+//     const newClicks = {
+//       left: clicks.left + 1,
+//       right: clicks.right
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   const handleRightClick = () => {
+//     const newClicks = {
+//       left: clicks.left,
+//       right: clicks.right + 1
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   return (
+//     <div style={{ margin: '25px', fontSize: '24px'}}>
+//       {clicks.left}
+//       <button style={buttonStyle} onClick={handleLeftClick}>
+//         left
+//       </button>
+
+//       <button style={buttonStyle} onClick={handleRightClick}>
+//         right
+//       </button>
+//       {clicks.right}
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+// import React, { useState } from 'react';
+
+// function App() {
+
+//   // useState hook
+//   // move the states into a single state
+//   // const [left, setLeft] = useState(0);
+//   // const [right, setRight] = useState(0);
+
+//   const [clicks, setClicks] = useState({
+//     left: 0, 
+//     right: 0
+//   });
+
+//   const handleLeftClick = () => {
+//     const newClicks = {
+//       left: clicks.left + 1,
+//       right: clicks.right
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   const handleRightClick = () => {
+//     const newClicks = {
+//       left: clicks.left,
+//       right: clicks.right + 1
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   return (
+//     <div>
+//       {clicks.left}
+//       <button onClick={handleLeftClick}>
+//         left
+//       </button>
+
+//       <button onClick={handleRightClick}>
+//         right
+//       </button>
+//       {clicks.right}
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function App() {
+
+//   // useState hook
+//   // move the states into a single state
+//   // const [left, setLeft] = useState(0);
+//   // const [right, setRight] = useState(0);
+
+//   const [clicks, setClicks] = useState({
+//     left: 0, 
+//     right: 0
+//   });
+
+//   const handleLeftClick = () => {
+//     const newClicks = {
+//       ...clicks,
+//       left: clicks.left + 1,
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   const handleRightClick = () => {
+//     const newClicks = {
+//       ...clicks,
+//       right: clicks.right + 1
+//     };
+//     setClicks(newClicks);
+//   };
+
+//   return (
+//     <div>
+//       {clicks.left}
+//       <button onClick={handleLeftClick}>
+//         left
+//       </button>
+
+//       <button onClick={handleRightClick}>
+//         right
+//       </button>
+//       {clicks.right}
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function App() {
+
+//   // useState hook
+//   // move the states into a single state
+//   // const [left, setLeft] = useState(0);
+//   // const [right, setRight] = useState(0);
+
+//   const [clicks, setClicks] = useState({
+//     left: 0, 
+//     right: 0
+//   });
+
+//   // const handleLeftClick = () => {
+//   //   setClicks({
+//   //     ...clicks,
+//   //     left: clicks.left + 1,
+//   //   });
+//   // };
+
+//   const handleLeftClick = () => setClicks({...clicks, left: clicks.left + 1,});
+
+//   const handleRightClick = () => {
+//     setClicks({
+//       ...clicks,
+//       right: clicks.right + 1
+//     });
+//   };
+
+//   return (
+//     <div>
+//       {clicks.left}
+//       <button onClick={handleLeftClick}>
+//         left
+//       </button>
+
+//       <button onClick={handleRightClick}>
+//         right
+//       </button>
+//       {clicks.right}
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function App() {
+
+//   const [clicks, setClicks] = useState({
+//     left: 0, 
+//     right: 0
+//   });
+//   // a new state to keep track of all the clicks we have done on this component
+//   // allClicks = ['L', 'R', 'R', 'R', 'L', 'L', 'R']
+//   const [allClicks, setAllClicks] = useState([]);
+
+//   const handleLeftClick = () => {
+//     setAllClicks(allClicks.concat('L'));
+//     setClicks({...clicks, left: clicks.left + 1,})
+//   };
+
+//   const handleRightClick = () => {
+//     setAllClicks(allClicks.concat('R'));
+//     setClicks({...clicks, right: clicks.right + 1,})
+//   };
+
+//   return (
+//     <div>
+//       {clicks.left}
+//       <button onClick={handleLeftClick}>
+//         left
+//       </button>
+
+//       <button onClick={handleRightClick}>
+//         right
+//       </button>
+//       {clicks.right}
+//       <p>Clicks History: { allClicks.join(', ') }</p>
+//     </div>
+
+//   )
+// }
+
+// export default App;
+
+// useEffect hook
+
+// import React, { useEffect, useState } from 'react';
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(() => {
+//     document.title = `Count: ${count}`;
+//   }, [count]);
+
+//   const incrementHandler = () => {
+//     setCount(count + 1);
+//     // document.title = `Count: ${count}`;// this will work
+//   };
+
+//   // document.title = `Count: ${count}`;// this will also work
+
+//   return (
+//     <div>
+//       <h1>Document Title Updater</h1>
+//       <p>Count: {count}</p>
+//       <button onClick={incrementHandler}>Increment</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useEffect, useState } from 'react';
+
+// function App() {
+//   const [data, setData] = useState(null);
+
+//   useEffect(() => {
+//     fetch('https://jsonplaceholder.typicode.com/posts')
+//       .then((response) => response.json())
+//       .then((data) => setData(data));
+//   }, []);
+
+//   console.log(data);
+
+//   return (
+//     <div>
+//       <h1>API DATA</h1>
+//       {data ? (
+//         <ul>
+//           {
+//             data.map(item => (
+//               <li key={item.id}>{item.title}</li>
+//             ))
+//           }
+//         </ul>
+//       ): (
+//           <p>Loading data...</p>
+//       )}  
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// props drilling: parent component that passes props to the nested child components
+
+// import React from 'react';
+
+// function GrandChildComponent({ parentData, childData }) {
+//   console.log('Data received from parent & grandparent: ', parentData, childData);
+
+//   return (
+//     <div>
+//       <h3>GrandChild Component</h3>
+//     </div>
+//   )
+// }
+
+// function ChildComponent({ parentData }) {
+
+//   // data at the child component
+//   const childData = 'Hello from Child';
+
+//   console.log('Data received from parent in Child: ', parentData);
+//   return (
+//     <div>
+//       <h2>Child Component</h2>
+//       <GrandChildComponent parentData={ parentData } childData={ childData } />
+//     </div>
+//   )
+// }
+
+// // Parent Component
+// function App() {
+//   // data at the parent component
+//   const parentData = 'Hello from Parent';
+
+//   return (
+//     <div>
+//       <h1>Parent Component</h1>
+//       <ChildComponent parentData={ parentData } />
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// Passing data from child to parent component
+// import React, { useState } from 'react';
+
+// function ChildComponent({ onMessage }) {
+//   const handleClick = () => {
+//     const message = 'Hello from Child';
+//     onMessage(message);
+//   }
+
+//   return (
+//     <div>
+//       <h2>Child Component</h2>
+//       <button onClick={handleClick}>Send Message to the Parent</button>
+//     </div>
+//   )
+// }
+
+// function App() {
+//   // use a state
+//   const [message, setMessage] = useState(' ');
+
+//   // create a function that sets the state of the message
+//   const handleMessage = (data) => {
+//     setMessage(data);
+//   }
+
+//   return (
+//     <div>
+//       <h2>Parent Component</h2>
+//       <p>Message from Child: { message }</p>
+//       <ChildComponent onMessage={ handleMessage } />
+//     </div>
+//   )
+// }
+
+// export default App;
+
+import React, { useState } from 'react';
 
 function App() {
-  
+  const [count, setCount] = useState(0);
+
   return (
     <div>
-      <Gallery />
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <h1>{ count }</h1>
+      <button onClick={() => {
+        setCount(count => count + 1);
+        setCount(count => count + 1);
+        setCount(count => count + 1);
+      }}>+3</button>
     </div>
   )
 }
