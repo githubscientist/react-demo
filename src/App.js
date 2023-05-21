@@ -1030,20 +1030,56 @@
 
 // export default App;
 
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+
+// function App() {
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <div>
+//       <button onClick={() => setCount(count + 1)}>+1</button>
+//       <h1>{ count }</h1>
+//       <button onClick={() => {
+//         setCount(count => count + 1);
+//         setCount(count => count + 1);
+//         setCount(count => count + 1);
+//       }}>+3</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+// React Router API
+// Router - keep the UI in sync with the URL (BrowserRouter)
+// Link - Renders a navigation link
+// Route - renders a ui component depending on the url
+
+import React from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+import Home from './components/Home';
+import Messages from './components/Messages';
+import About from './components/About';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-      <h1>{ count }</h1>
-      <button onClick={() => {
-        setCount(count => count + 1);
-        setCount(count => count + 1);
-        setCount(count => count + 1);
-      }}>+3</button>
+      <div>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/messages'>Messages</Link></li>
+        <li><Link to='/about'>About</Link></li>
+      </ul>
+      </div>
+      
+      <div>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/messages' component={Messages} />
+          <Route path='/about' component={About} />
+          <Redirect to='/' />
+        </Switch>
+      </div>
     </div>
   )
 }
