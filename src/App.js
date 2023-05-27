@@ -1054,33 +1054,187 @@
 // Link - Renders a navigation link
 // Route - renders a ui component depending on the url
 
-import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import Messages from './components/Messages';
-import About from './components/About';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+// import React from 'react';
+// import { Link, Route, Switch } from 'react-router-dom';
+// import Home from './components/Home';
+// import Messages from './components/Messages';
+// import About from './components/About';
+// import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-function App() {
+// function App() {
+//   return (
+//     <div>
+//       <div>
+//       <ul>
+//         <li><Link to='/'>Home</Link></li>
+//         <li><Link to='/messages'>Messages</Link></li>
+//         <li><Link to='/about'>About</Link></li>
+//       </ul>
+//       </div>
+      
+//       <div>
+//         <Switch>
+//           <Route exact path='/' component={Home} />
+//           <Route path='/messages' component={Messages} />
+//           <Route path='/about' component={About} />
+//           <Redirect to='/' />
+//         </Switch>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function App() {
+//   // status = {'', 'submitting', 'error', 'success' }
+//   const [status, setStatus] = useState('typing');
+//   const [answer, setAnswer] = useState('');
+//   const [error, setError] = useState(null);
+
+//   if (status === 'success') {
+//     return <h1>That's right!</h1>
+//   }
+
+//   // function handleTextAreaChange(e) {
+//   //   setAnswer(e.target.value);
+//   // }
+
+//   function submitForm(answer) {
+//     return new Promise((resolve, reject) => {
+//       setTimeout(() => {
+//         if (answer.toLowerCase() != 'lima') {
+//           reject(new Error('Good guess but a wrong answer. Try again!'));
+//         } else {
+//           resolve();
+//         }
+//       }, 1500);
+//     });
+//   }
+
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+//     setStatus('submitting');
+//     try {
+//       await submitForm(answer);
+//       setStatus('success');
+//     } catch (err) {
+//       setStatus('typing');
+//       setError(err);
+//     }
+//   }
+
+//   return (
+//     <>
+//       <h2>City Quiz</h2>
+//       <p>
+//         In Which city is there a billboard that turns air into drinkable water?
+//       </p>
+//       <form onSubmit={handleSubmit}>
+//         <textarea
+//           disabled={status === 'submitting'} 
+//           onChange={(e) => setAnswer(e.target.value)}
+//           value={answer}
+//         />
+//         <br />
+//         <button
+//           disabled={ answer.length == 0 || status === 'submitting'}
+//         >
+//           Submit
+//         </button>
+
+//         { 
+//           status === 'submitting' && 
+//           <p>Loading...</p>
+//         }
+
+//         {
+//           error !=null &&
+//           <p style={{color: 'red'}}>
+//               {error.message}
+//           </p>
+//         }
+//       </form>
+//     </>
+//   )
+// }
+
+// export default App;
+
+// import React, { createContext, useContext } from 'react';
+// const MyContext = createContext();
+
+// function ChildComponent() {
+//   const data = useContext(MyContext);
+//   return (
+//     <div>
+//       {data}
+//     </div>
+//   );
+// }
+
+// function App() {
+//   const data = 'Hello from parent';
+
+//   return (
+//     <MyContext.Provider value={data}>
+//       <ChildComponent/>
+//     </MyContext.Provider>
+//   );
+// }
+
+// export default App;
+
+/*
+  Implement a React component that allows users to change their profile name using the Context API. The component should consist of two parts: a parent component called App and a child component called Profile.
+
+The App component should:
+
+  - Import necessary dependencies from the React library.
+
+  - Create a context object using the createContext function from React.
+
+  - Define a state variable called profileName using the useState hook and set its initial value to an empty string.
+
+  - Wrap the Profile component with the context provider component, passing the profileName state variable and its corresponding setter function as the value prop.
+
+The Profile component should:
+
+	- Import necessary dependencies from the React library.
+	- Use the useContext hook to access the profileName state variable and its setter function from the context.
+	- Render an input field where users can enter their profile name, with its value set to the profileName state variable.
+	- Add an onChange event handler to the input field that updates the profileName state variable with the entered value using the setter function.
+	- Make sure to export the App component as the default export.
+*/
+
+import React, { createContext, useContext, useState } from 'react';
+const MyContext = createContext();
+
+function Profile() {
+
+  const { profileName, setProfileName } = useContext(MyContext);
   return (
     <div>
-      <div>
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/messages'>Messages</Link></li>
-        <li><Link to='/about'>About</Link></li>
-      </ul>
-      </div>
-      
-      <div>
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/messages' component={Messages} />
-          <Route path='/about' component={About} />
-          <Redirect to='/' />
-        </Switch>
-      </div>
+      <h2>Profile Name: {profileName} </h2>
+      <input 
+        type='text'
+        value={profileName}
+        onChange={(e) => setProfileName(e.target.value)}
+      />
     </div>
+  )
+}
+
+function App() {
+
+  const [profileName, setProfileName] = useState('');
+
+  return (
+    <MyContext.Provider value={{ profileName, setProfileName }}>
+      <Profile />
+    </MyContext.Provider>
   )
 }
 
