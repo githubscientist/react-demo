@@ -1209,32 +1209,359 @@ The Profile component should:
 	- Make sure to export the App component as the default export.
 */
 
-import React, { createContext, useContext, useState } from 'react';
-const MyContext = createContext();
+// import React, { createContext, useContext, useState } from 'react';
+// const MyContext = createContext();
 
-function Profile() {
+// function Profile() {
 
-  const { profileName, setProfileName } = useContext(MyContext);
+//   const { profileName, setProfileName } = useContext(MyContext);
+//   return (
+//     <div>
+//       <h2>Profile Name: {profileName} </h2>
+//       <input 
+//         type='text'
+//         value={profileName}
+//         onChange={(e) => setProfileName(e.target.value)}
+//       />
+//     </div>
+//   )
+// }
+
+// function App() {
+
+//   const [profileName, setProfileName] = useState('');
+
+//   return (
+//     <MyContext.Provider value={{ profileName, setProfileName }}>
+//       <Profile />
+//     </MyContext.Provider>
+//   )
+// }
+
+// export default App;
+
+// useRef, useReducer
+
+// import React, { useRef } from 'react';
+
+// function App() {
+
+//   const inputRef = useRef(null);
+
+//   let handleButtonClick = () => {
+//     inputRef.current.focus();
+//   }
+
+//   return (
+//     <div>
+//       <input type='text' ref={inputRef} />
+//       <button onClick={handleButtonClick}>Focus Input</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useRef, useState } from 'react';
+
+// function App() {
+
+//   const inputRef = useRef(null);
+//   const [text, setText] = useState('');
+
+//   let handleButtonClick = () => {
+//     setText(inputRef.current.value);
+//   }
+
+//   return (
+//     <div>
+//       <input type='text' ref={inputRef} />
+//       <button onClick={handleButtonClick}>Get Text</button>
+
+//       <p>Entered Text: { text }</p>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// autofocus on the input field
+// import React, { useEffect, useRef } from 'react';
+
+// function App() {
+
+//   const inputRef = useRef(null);
+
+//   useEffect(() => {
+//     inputRef.current.focus();
+//   }, []);
+
+//   return (
+//     <div>
+//       <input type='text' ref={inputRef} />
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useRef, useState } from 'react';
+
+// function App() {
+
+//   const [count, setCount] = useState(0);
+//   const previousCountRef = useRef(null);
+
+//   let handleIncrement = () => {
+//     previousCountRef.current = count;
+//     setCount((prevCount) => prevCount + 1);
+//   };
+
+//   return (
+//     <div>
+//       <p>Current Count: {count}</p>
+//       <p>Previous Count: { previousCountRef.current }</p>
+//       <button onClick={handleIncrement}>Increment</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useRef, useState } from 'react';
+
+// function App() {
+
+//   const [count, setCount] = useState(0);
+//   const previousCountRef = useRef(null);
+
+//   let handleIncrement = () => {
+//     previousCountRef.current = count;
+//     setCount((prevCount) => prevCount + 1);
+//   };
+
+//   return (
+//     <div>
+//       <p>Current Count: {count}</p>
+//       <p>Previous Count: { previousCountRef.current }</p>
+//       <button onClick={handleIncrement}>Increment</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// autofocus on the input field
+// import React, { useEffect, useRef } from 'react';
+
+// function App() {
+
+//   const sharedRef = useRef(null);
+
+//   useEffect(() => {
+//     console.log(sharedRef);
+//   }, []);
+
+//   return (
+//     <div>
+//       <input type='text' ref={sharedRef} />
+//       <button ref={sharedRef}>Click Me</button>
+//       <span ref={sharedRef}></span>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// useReducer 
+
+// import React, { useReducer } from 'react';
+
+// const initialState = false;
+
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case 'toggle':
+//       return !state;
+//     default:
+//       throw new Error();
+//   }
+// }
+
+
+// function App() {
+
+//   const [state, dispatch] = useReducer(reducer, initialState);
+
+//   return (
+//     <div>
+//       <p>Button Toggle</p>
+//       <button onClick={() => dispatch({ type: 'toggle' })}>
+//         { state ? 'ON' : 'OFF' }
+//       </button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// multiple states with useReducer
+
+// import React, { useReducer } from 'react';
+
+// const initialState = 0;
+
+// function reducer(state, action) {
+//   switch (action.type) {
+//     case 'increment':
+//       return state + 1;
+//     case 'decrement':
+//       return state - 1;
+//     default:
+//       throw new Error();
+//   }
+// }
+
+// function App() {
+
+//   const [count, dispatch] = useReducer(reducer, initialState);
+
+//   return (
+//     <div>
+//       <button onClick={() => dispatch({type: 'increment'})}>Increment</button>
+//       <p>Count: { count }</p>
+//       <button onClick={() => dispatch({type: 'decrement'})}>Decrement</button>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+// import React, { useState } from 'react';
+
+// function Button({value, onClick}) {
+
+//   return (
+//     <button onClick={onClick}>{ value }</button>
+//   )
+// }
+
+// function App() {
+
+//   const [value, setValue] = useState(' ');
+
+//   function clickHandler() {
+//     setValue('X');
+//   }
+
+//   return (
+//     <div>
+//       <div>
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//       </div>
+//       <div>
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//       </div>
+//       <div>
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//         <Button value= { value } onClick={clickHandler} />
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+import React, { useState } from 'react';
+
+function Button({ value, onClick }) {
+  
+
+
   return (
-    <div>
-      <h2>Profile Name: {profileName} </h2>
-      <input 
-        type='text'
-        value={profileName}
-        onChange={(e) => setProfileName(e.target.value)}
-      />
-    </div>
+    <button
+      className='square'
+      onClick={onClick}>{value}</button>
   )
 }
 
 function App() {
 
-  const [profileName, setProfileName] = useState('');
+  const [xIsNext, setXIsNext] = useState(true);
+  const [squares, setSquares] = useState(Array(9).fill(null));
+
+  function handleClick(i) {
+
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+
+    const nextSquares = squares.slice();
+    if (xIsNext) {
+      nextSquares[i] = 'X';
+    } else {
+      nextSquares[i] = 'O';
+    }
+    setSquares(nextSquares);
+    setXIsNext(!xIsNext);
+  }
+
+  function calculateWinner(squares) {
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    for (let i = 0; i < lines.length; i++){
+      const [a, b, c] = lines[i];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+        return squares[a];
+      }
+    }
+    return null;
+  }
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  }
+    
 
   return (
-    <MyContext.Provider value={{ profileName, setProfileName }}>
-      <Profile />
-    </MyContext.Provider>
+    <div>
+      <div>
+        {status}
+      </div>
+      <div className='row'>
+        <Button value={squares[0]} onClick={ () => handleClick(0) } />
+        <Button value={squares[1]} onClick={ () => handleClick(1) } />
+       <Button value={squares[2]} onClick={ () => handleClick(2) } />
+      </div>
+      <div className='row'>
+        <Button value={squares[3]} onClick={ () => handleClick(3) } />
+        <Button value={squares[4]} onClick={ () => handleClick(4) } />
+       <Button value={squares[5]} onClick={ () => handleClick(5) } />
+      </div>
+      <div className='row'>
+        <Button value={squares[6]} onClick={ () => handleClick(6) } />
+        <Button value={squares[7]} onClick={ () => handleClick(7) } />
+       <Button value={squares[8]} onClick={ () => handleClick(8) } />
+      </div>
+    </div>
   )
 }
 
