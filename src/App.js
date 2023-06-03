@@ -1575,6 +1575,7 @@ import axios from 'axios';
 function App() {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
+  const [showAll, setShowAll] = useState(true);
 
   // make the api request
   useEffect(() => {
@@ -1584,6 +1585,8 @@ function App() {
         setNotes(response.data);
       })
   }, []);
+
+  const notesToShow = showAll ? notes : notes.filter(note => note.important === true);
 
   // addNote function
   const addNote = (event) => {
@@ -1630,13 +1633,43 @@ function App() {
   //   const notes = response.data;
   // });
 
+  const toggleImportanceOf = (id) => {
+    // console.log('importance of ' + id + ' needs to be toggled');
+    const url = `http://localhost:3002/notes/${id}`;
+    const note = notes.find(n => n.id == id);
+    const changedNote = {
+      ...note,
+      important: !note.important
+    };
+
+    // make the api request
+    axios
+      .put(url, changedNote)
+      .then(response => {
+        setNotes(notes.map(note => {
+          // return the entire original array or
+          // the updated
+          return note.id != id ? note : response.data;
+        }));
+      });
+  }
+
   return (
     <div>
       <h1>Notes</h1>
+      <div>
+        <button onClick={() => setShowAll(!showAll)}>
+          show {showAll ? 'important' : 'all'}
+        </button>
+      </div>
       <ul>
         {
-          notes.map(
-            note => <Note key={note.id} note={note} />
+          notesToShow.map(
+            note => <Note
+              key={note.id}
+              note={note} 
+              toggleImportance = {() => toggleImportanceOf(note.id)}
+              />
           )
         }
       </ul>
