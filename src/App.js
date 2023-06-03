@@ -1594,11 +1594,19 @@ function App() {
     const noteObject = {
       content: newNote,
       important: Math.random() < 0.5,
-      id: notes.length + 1
     };
 
     // append it to the notes state
-    setNotes(notes.concat(noteObject));
+    // setNotes(notes.concat(noteObject));
+    axios
+      .post('http://localhost:3002/notes', noteObject)
+      .then(response => {
+        // console.log(response);
+        // after a creating a new resource
+        // update the state
+        setNotes(notes.concat(response.data));
+        setNewNote('');
+      });
 
     // clear the newNote state
     setNewNote('');
