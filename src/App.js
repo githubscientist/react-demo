@@ -1569,6 +1569,7 @@ The Profile component should:
 // Create, Read, Update, Delete
 
 import React from 'react';
+import Note from './components/Note';
 
 function App({ notes }) {
   return (
@@ -1576,9 +1577,9 @@ function App({ notes }) {
       <h1>Notes</h1>
       <ul>
         {
-          notes.map(note => {
-            return <li>{ note.content }</li>
-          })
+          notes.map(
+            note => <Note key={note.id} note={note} />
+          )
         }
       </ul>
     </div>
