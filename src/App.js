@@ -1568,12 +1568,22 @@ The Profile component should:
 // Note Taking Application - CRUD Operations
 // Create, Read, Update, Delete
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Note from './components/Note';
+import axios from 'axios';
 
-function App(props) {
-  const [notes, setNotes] = useState(props.notes);
+function App() {
+  const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
+
+  // make the api request
+  useEffect(() => {
+    axios
+      .get('http://localhost:3002/notes')
+      .then(response => {
+        setNotes(response.data);
+      })
+  }, []);
 
   // addNote function
   const addNote = (event) => {
@@ -1599,6 +1609,18 @@ function App(props) {
     // console.log(event.target.value);
     setNewNote(event.target.value);
   }
+
+  // axios demo
+  // const promise = axios.get('http://localhost:3002/notes');
+  // console.log(promise);
+  // const promise = axios.get('http://localhost:3002/foobar');
+  // console.log(promise);
+
+  // const promise = axios.get('http://localhost:3002/notes');
+
+  // promise.then(response => {
+  //   const notes = response.data;
+  // });
 
   return (
     <div>
