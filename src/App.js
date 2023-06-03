@@ -1570,9 +1570,18 @@ The Profile component should:
 
 import React from 'react';
 
-function App() {
+function App({ notes }) {
   return (
-    <div>App</div>
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {
+          notes.map(note => {
+            return <li>{ note.content }</li>
+          })
+        }
+      </ul>
+    </div>
   )
 }
 
