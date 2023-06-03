@@ -1568,10 +1568,38 @@ The Profile component should:
 // Note Taking Application - CRUD Operations
 // Create, Read, Update, Delete
 
-import React from 'react';
+import React, { useState } from 'react';
 import Note from './components/Note';
 
-function App({ notes }) {
+function App(props) {
+  const [notes, setNotes] = useState(props.notes);
+  const [newNote, setNewNote] = useState('');
+
+  // addNote function
+  const addNote = (event) => {
+    event.preventDefault();
+    // console.log('button clicked', event.target);
+    
+    // create the new note object
+    const noteObject = {
+      content: newNote,
+      important: Math.random() < 0.5,
+      id: notes.length + 1
+    };
+
+    // append it to the notes state
+    setNotes(notes.concat(noteObject));
+
+    // clear the newNote state
+    setNewNote('');
+  }
+
+  // handleNoteChange handler function
+  const handleNoteChange = (event) => {
+    // console.log(event.target.value);
+    setNewNote(event.target.value);
+  }
+
   return (
     <div>
       <h1>Notes</h1>
@@ -1582,6 +1610,11 @@ function App({ notes }) {
           )
         }
       </ul>
+
+      <form onSubmit={addNote}>
+        <input value={ newNote } onChange={handleNoteChange} placeholder='a new note...'/>
+        <button type='submit'>save</button>
+      </form>
     </div>
   )
 }
