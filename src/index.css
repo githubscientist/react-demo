@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -25,4 +25,10 @@ body {
   clear: both;
   content: '';
   display: table;
+} */
+
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  padding: 0;
 }
