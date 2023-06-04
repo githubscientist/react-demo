@@ -1691,6 +1691,8 @@ function App() {
         <input value={ newNote } onChange={handleNoteChange} placeholder='a new note...'/>
         <button type='submit'>save</button>
       </form>
+
+      {/* redux - state management */}
     </div>
   )
 }
