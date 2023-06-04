@@ -1636,7 +1636,7 @@ function App() {
   const toggleImportanceOf = (id) => {
     // console.log('importance of ' + id + ' needs to be toggled');
     const url = `http://localhost:3002/notes/${id}`;
-    const note = notes.find(n => n.id == id);
+    const note = notes.find(n => n.id === id);
     const changedNote = {
       ...note,
       important: !note.important
@@ -1649,7 +1649,7 @@ function App() {
         setNotes(notes.map(note => {
           // return the entire original array or
           // the updated
-          return note.id != id ? note : response.data;
+          return note.id !== id ? note : response.data;
         }));
       });
   }
@@ -1661,7 +1661,7 @@ function App() {
       .delete(url)
       .then(response => {
         setNotes(notes.filter(note => {
-          return note.id != id;
+          return note.id !== id;
         }))
       })
   }
