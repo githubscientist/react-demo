@@ -17,6 +17,8 @@ function ReadNotes({ notes }) {
                 return notes.filter(note => note.important === true);
             case 'nonimp':
                 return notes.filter(note => note.important === false);
+            default:
+                return notes;
         }
     }
 
